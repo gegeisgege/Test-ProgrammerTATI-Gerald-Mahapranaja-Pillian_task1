@@ -30,7 +30,7 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
-            'supervisor_id' => 'nullable|integer|exists:employees,id', // Adjust validation as needed
+            'supervisor_id' => 'nullable|integer|exists:employees,id', 
         ]);
     
         Employee::create($request->all());
