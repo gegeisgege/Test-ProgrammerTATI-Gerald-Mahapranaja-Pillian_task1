@@ -11,14 +11,14 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable; // Added Notifiable for email verification
 
-    protected $fillable = ['name', 'email', 'password', 'jabatan', 'supervisor_id', 'role']; // Added 'role' field
+    protected $fillable = ['name', 'email', 'password', 'jabatan', 'supervisor_id', 'role']; 
 
     /**
      * A user has one employee profile
      */
     public function employee()
     {
-        return $this->hasOne(Employee::class, 'user_id', 'id'); // Fixed foreign key reference
+        return $this->hasOne(Employee::class, 'user_id', 'id'); 
     }
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function supervisedEmployees()
     {
-        return $this->hasMany(Employee::class, 'supervisor_id', 'id'); // Corrected structure
+        return $this->hasMany(Employee::class, 'supervisor_id', 'id'); 
     }
 
     /**
@@ -34,7 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function atasan()
     {
-        return $this->belongsTo(User::class, 'supervisor_id', 'id'); // Fixed foreign key reference
+        return $this->belongsTo(User::class, 'supervisor_id', 'id'); 
     }
 
     /**
